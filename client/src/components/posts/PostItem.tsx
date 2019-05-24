@@ -17,7 +17,7 @@ export const PostItem: React.FC<POSTITEM> = (props: POSTITEM): React.ReactElemen
   const loginStore: LoginStore = useAsObservableSource(React.useContext(LoginContext))
   const postStore: PostStore = useAsObservableSource(React.useContext(PostContext))
   const profileStore: ProfileStore = useAsObservableSource(React.useContext(ProfileContext))
-  console.log(postStore.post.comments)
+
   const { post, showActions = true } = props
 
   const onDeleteClick = (id: string): void => {
