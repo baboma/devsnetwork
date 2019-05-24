@@ -17,7 +17,7 @@ export const PostItem: React.FC<POSTITEM> = (props: POSTITEM): React.ReactElemen
   const loginStore: LoginStore = useAsObservableSource(React.useContext(LoginContext))
   const postStore: PostStore = useAsObservableSource(React.useContext(PostContext))
   const profileStore: ProfileStore = useAsObservableSource(React.useContext(ProfileContext))
-
+  console.log(postStore.post.comments)
   const { post, showActions = true } = props
 
   const onDeleteClick = (id: string): void => {
@@ -75,7 +75,8 @@ export const PostItem: React.FC<POSTITEM> = (props: POSTITEM): React.ReactElemen
                   <i className='text-secondary fas fa-thumbs-down' />
                 </button>
                 <Link to={`/post/${post._id}`} className='btn btn-info mr-1'>
-                  <i className='fas fa-pencil-alt' />
+                  <i className='fas fa-pencil-alt' />&nbsp;
+                  <span className='badge badge-light'>{postStore.post.comments.length}</span>
                 </Link>
                 {post.user === loginStore.user.id ?
                   (<button onClick={() => onDeleteClick(post._id)} type='button'
